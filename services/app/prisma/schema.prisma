@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id          Int           @id @default(autoincrement())
+  name        String
+  userId      String
+  description String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  product     Product?
+  storeRating StoreRating[]
+}
+
+model Product {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?    @db.Text
+  price       Int        @default(0)
+  stock       Int        @default(0)
+  mainImg     String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  store       Store      @relation(fields: [storeId], references: [id])
+  storeId     Int        @unique
+  category    Category   @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  cart        Cart[]
+  wishlist    Wishlist[]
+  image       Image[]
+  history     History[]
+  rating      Rating[]
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  imgUrl    String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Wishlist {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product[]
+}
+
+model History {
+  id          Int      @id @default(autoincrement())
+  name        String
+  userId      String
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   Int
+  description String
+  updatedBy   String
+  createdAt   DateTime @default(now())
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model StoreRating {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  store     Store    @relation(fields: [storeId], references: [id])
+  storeId   Int
+}
