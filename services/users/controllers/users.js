@@ -12,7 +12,7 @@ module.exports = {
 
       res.status(200).json({ message: `Find All Users`, users });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   findOneUser: async (req, res, next) => {
@@ -22,13 +22,10 @@ module.exports = {
 
       res.status(200).json({ message: `Find One User with id ${id}`, user });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   createUser: async (req, res, next) => {
-    console.log("hi");
-    console.log(req.body, "<<< 33");
     try {
       const { email, password, role = "user" } = req.body;
       console.log(req.body);
@@ -41,8 +38,7 @@ module.exports = {
       });
       res.status(201).json({ user: newUser });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   deleteUser: async (req, res, next) => {
@@ -53,13 +49,8 @@ module.exports = {
       if (!user) throw { name: "Error not found" };
 
       res.status(200).json({ message: `User with id ${id} has been deleted` });
-    } catch (err) {
-      console.log(err);
-      if (err.name === "Error not found") {
-        res.status(404).json({ message: "Error not found" });
-      } else {
-        res.status(500).json({ message: "Internal Server Error" });
-      }
+    } catch (error) {
+      next(error);
     }
   },
   editUser: async (req, res, next) => {
@@ -79,8 +70,7 @@ module.exports = {
 
       res.status(201).json({ user: updateUser });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   loginUser: async (req, res, next) => {
@@ -111,8 +101,8 @@ module.exports = {
           role: user.role,
         });
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      next(error);
     }
   },
 };

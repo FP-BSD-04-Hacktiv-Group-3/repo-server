@@ -1,18 +1,30 @@
-function errorHandler(error, request, response, next) {
-  let statusCode = 500;
-  let message = error.name || error;
+const errorHandlers = (err, req, res, next) => {
+  console.log(err);
 
-  switch (error.name) {
-    case "":
+  let statusCode = 0;
+  let message = "";
+
+  switch (err.name) {
+    case "Error not found":
+      statusCode = 404;
+      message = "Error not found";
       break;
-
+    case "invalidAccount":
+      statusCode = 401;
+      message = "Invalid Email / Password";
+      break;
+    case "NotAuthorization":
+      statusCode = 403;
+      message = "Unauthorize";
+      break;
     default:
-      break;
+      statusCode = 500;
+      message = "Internal Server Error";
   }
-
-  response.status(statusCode).json({
+  res.status(statusCode).json({
+    statusCode,
     message,
   });
-}
+};
 
-module.exports = errorHandler;
+module.exports = errorHandlers;
