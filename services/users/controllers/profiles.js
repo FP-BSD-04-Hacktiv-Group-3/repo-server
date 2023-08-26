@@ -9,7 +9,7 @@ module.exports = {
 
       res.status(200).json({ message: `Find All Profiles`, profiles });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   findOneProfile: async (req, res, next) => {
@@ -21,8 +21,7 @@ module.exports = {
         .status(200)
         .json({ message: `Find One Profile with id ${id}`, profile });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   createProfile: async (req, res, next) => {
@@ -41,8 +40,7 @@ module.exports = {
       });
       res.status(201).json({ profile: newProfile });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
   deleteProfile: async (req, res, next) => {
@@ -55,13 +53,8 @@ module.exports = {
       res
         .status(200)
         .json({ message: `Profile with id ${id} has been deleted` });
-    } catch (err) {
-      console.log(err);
-      if (err.name === "Error not found") {
-        res.status(404).json({ message: "Error not found" });
-      } else {
-        res.status(500).json({ message: "Internal Server Error" });
-      }
+    } catch (error) {
+      next(error);
     }
   },
   editProfile: async (req, res, next) => {
@@ -79,8 +72,7 @@ module.exports = {
 
       res.status(201).json({ profile: updateProfile });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Internal Server Error" });
+      next(error);
     }
   },
 };
