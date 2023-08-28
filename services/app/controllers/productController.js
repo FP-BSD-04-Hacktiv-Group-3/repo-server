@@ -5,6 +5,17 @@ class ProductController{
     static async findMany(request, response, next){
         try {
             const { search, categories } = request.query;
+
+            const option = {}
+
+            if(search) option.where = {
+                name: search
+            }
+
+            if(categories) option.where = {
+                categoryId: categories
+            }
+
             const data = await prisma.product.findMany();
 
             response.status(200).json({
@@ -43,28 +54,37 @@ class ProductController{
         try {
             const { 
                 title,
+                description,
                 price,
                 stock,
-                description,
-                userId,
-                categoryId
-             } = request.body;
+                mainImg,
+                storeId,
+                categoryId,
+                images
+            } = request.body;
 
-             await prisma.product.create({
+            const option = {
                 data: {
                     title,
                     price,
                     stock,
+                    mainImg,
                     description,
-                    userId,
+                    storeId,
                     categoryId,
                 }
-             })
+            }
 
-             response.status(201).json({
+            if(images || images.length > 0){
+                option.images.create = images;
+            }
+            
+            await prisma.product.create(option)
+
+            response.status(201).json({
                 statusCode: 201,
-                data: "Successfully create"
-             })
+                data: "Successfully create a product"
+            })
         } catch (error) {
             console.log(error);
             next(error);
@@ -76,31 +96,35 @@ class ProductController{
 
             const { 
                 title,
+                description,
                 price,
                 stock,
-                description,
-                userId,
-                categoryId
+                mainImg,
+                storeId,
+                categoryId,
+                images
              } = request.body;
 
-             await prisma.product.update({
+            await prisma.product.update({
                 where:{
                     id
                 },
                 data: {
                     title,
+                    description,
                     price,
                     stock,
-                    description,
-                    userId,
+                    mainImg,
+                    storeId,
                     categoryId,
+                    images
                 }
-             })
+            })
 
-             response.status(201).json({
+            response.status(201).json({
                 statusCode: 201,
                 data: "Successfully update " + id
-             })
+            })
         } catch (error) {
             console.log(error);
             next(error);
@@ -126,7 +150,6 @@ class ProductController{
             next(error);
         }
     }
-
 }
 
 module.exports = ProductController;
