@@ -11,14 +11,13 @@ datasource db {
 }
 
 model Store {
-  id          Int           @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   userId      String
   description String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   product     Product?
-  storeRating StoreRating[]
 }
 
 model Product {
@@ -27,7 +26,7 @@ model Product {
   description String?    @db.Text
   price       Int        @default(0)
   stock       Int        @default(0)
-  mainImg     String?
+  mainImg     String?    @db.Text
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   store       Store      @relation(fields: [storeId], references: [id])
@@ -37,13 +36,11 @@ model Product {
   cart        Cart[]
   wishlist    Wishlist[]
   image       Image[]
-  history     History[]
-  rating      Rating[]
 }
 
 model Image {
   id        Int      @id @default(autoincrement())
-  imgUrl    String
+  imgUrl    String   @db.Text
   product   Product  @relation(fields: [productId], references: [id])
   productId Int
   createdAt DateTime @default(now())
@@ -54,10 +51,13 @@ model Cart {
   id        Int      @id @default(autoincrement())
   userId    String
   quantity  Int      @default(1)
+  totalPrice Int
+  status    String   @default("updaid")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   product   Product  @relation(fields: [productId], references: [id])
   productId Int
+  history   History?
 }
 
 model Wishlist {
@@ -81,29 +81,15 @@ model History {
   id          Int      @id @default(autoincrement())
   name        String
   userId      String
-  product     Product  @relation(fields: [productId], references: [id])
-  productId   Int
   description String
+  rating      Int
   updatedBy   String
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  cart        Cart     @relation(fields: [cartId], references: [id])
+  cartId      Int      @unique
 }
 
-model Rating {
-  id        Int      @id @default(autoincrement())
-  userId    String
-  rating    Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  product   Product  @relation(fields: [productId], references: [id])
-  productId Int
-}
-
-model StoreRating {
-  id        Int      @id @default(autoincrement())
-  rating    Int
-  userId    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  store     Store    @relation(fields: [storeId], references: [id])
-  storeId   Int
+model HistoryDetail{
+  id Int @id @default(autoincrement())
 }

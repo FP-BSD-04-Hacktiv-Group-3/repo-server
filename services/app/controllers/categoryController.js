@@ -1,10 +1,16 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-class ProductController{
+class CategoryController{
     static async findMany(request, response, next){
         try {
-            const data = await prisma.category.findMany();
+            const { search } = request.query;
+
+            const option = {};
+
+            if(search) option.where = { name: search }
+
+            const data = await prisma.category.findMany(option);
 
             response.status(200).json({
                 statusCode: 200,
@@ -108,4 +114,4 @@ class ProductController{
 
 }
 
-module.exports = ProductController;
+module.exports = CategoryController;

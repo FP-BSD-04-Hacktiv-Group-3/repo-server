@@ -2,19 +2,31 @@ const { PrismaClient } = require("@prisma/client");
 const logging = require("../helpers/upload");
 const prisma = new PrismaClient();
 
-class ProductController {
-  static async findMany(request, response, next) {
-    try {
-      const { search, categories } = request.query;
-      const data = await prisma.product.findMany();
+class ProductController{
+    static async findMany(request, response, next){
+        try {
+            const { search, categories } = request.query;
 
-      response.status(200).json({
-        statusCode: 200,
-        data,
-      });
-    } catch (error) {
-      console.log(error);
-      next(error);
+            const option = {}
+
+            if(search) option.where = {
+                name: search
+            }
+
+            if(categories) option.where = {
+                categoryId: categories
+            }
+
+            const data = await prisma.product.findMany();
+
+            response.status(200).json({
+                statusCode: 200,
+                data
+            })
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
     }
   }
 
@@ -38,61 +50,87 @@ class ProductController {
       console.log(error);
       next(error);
     }
-  }
 
-  static async create(request, response, next) {
-    try {
-      const { title, price, stock, description, userId, categoryId } =
-        request.body;
+    static async create(request, response ,next){
+        try {
+            const { 
+                title,
+                description,
+                price,
+                stock,
+                mainImg,
+                storeId,
+                categoryId,
+                images
+            } = request.body;
 
-      await prisma.product.create({
-        data: {
-          title,
-          price,
-          stock,
-          description,
-          userId,
-          categoryId,
-        },
-      });
+            const option = {
+                data: {
+                    title,
+                    price,
+                    stock,
+                    mainImg,
+                    description,
+                    storeId,
+                    categoryId,
+                }
+            }
 
-      response.status(201).json({
-        statusCode: 201,
-        data: "Successfully create",
-      });
-    } catch (error) {
-      console.log(error);
-      next(error);
+            if(images || images.length > 0){
+                option.images.create = images;
+            }
+            
+            await prisma.product.create(option)
+
+            response.status(201).json({
+                statusCode: 201,
+                data: "Successfully create a product"
+            })
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
     }
-  }
-  static async update(request, response, next) {
-    try {
-      const { id } = request.params;
+    static async update(request, response ,next){
+        try {
+            const { id } = request.params;
 
-      const { title, price, stock, description, userId, categoryId } =
-        request.body;
+            const { 
+                title,
+                description,
+                price,
+                stock,
+                mainImg,
+                storeId,
+                categoryId,
+                images
+             } = request.body;
 
-      await prisma.product.update({
-        where: {
-          id,
-        },
-        data: {
-          title,
-          price,
-          stock,
-          description,
-          userId,
-          categoryId,
-        },
-      });
+            await prisma.product.update({
+                where:{
+                    id
+                },
+                data: {
+                    title,
+                    description,
+                    price,
+                    stock,
+                    mainImg,
+                    storeId,
+                    categoryId,
+                    images
+                }
+            })
 
-      response.status(201).json({
-        statusCode: 201,
-        data: "Successfully update " + id,
-      });
-    } catch (error) {
-      console.log(error);
-      next(error);
+            response.status(201).json({
+                statusCode: 201,
+                data: "Successfully update " + id
+            })
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+
     }
   }
 
@@ -114,6 +152,7 @@ class ProductController {
       console.log(error);
       next(error);
     }
+
   }
 
   // DELETE THIS ENDPOINT LATER THIS IS JUST FOR TESTING
