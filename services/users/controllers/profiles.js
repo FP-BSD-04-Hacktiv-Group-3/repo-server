@@ -16,7 +16,9 @@ module.exports = {
     try {
       const { id } = req.params;
       const profile = await Profile.findOne(id);
-
+      if (!profile) {
+        throw { name: "invalidAccount" };
+      }
       res
         .status(200)
         .json({ message: `Find One Profile with id ${id}`, profile });
@@ -25,8 +27,6 @@ module.exports = {
     }
   },
   createProfile: async (req, res, next) => {
-    console.log("hi");
-    console.log(req.body, "<<< 33");
     try {
       const { username, address, phoneNumber, userId } = req.body;
       console.log(req.body);
