@@ -19,7 +19,9 @@ module.exports = {
     try {
       const { id } = req.params;
       const user = await User.findOne(id);
-
+      if (!user) {
+        throw { name: "invalidAccount" };
+      }
       res.status(200).json({ message: `Find One User with id ${id}`, user });
     } catch (error) {
       next(error);
@@ -45,7 +47,6 @@ module.exports = {
     try {
       const { id } = req.params;
       const user = await User.deleteOne(id);
-      console.log(user, "<<<<<< iNI USER");
       if (!user) throw { name: "Error not found" };
 
       res.status(200).json({ message: `User with id ${id} has been deleted` });
@@ -56,9 +57,11 @@ module.exports = {
   editUser: async (req, res, next) => {
     try {
       let { email, password, role } = req.body;
+
       const { id } = req.params;
 
       password = encrypt(password);
+
       const updateUser = await User.updateOne(id, {
         email,
         password,
@@ -66,7 +69,7 @@ module.exports = {
         updateAt: new Date(),
       });
 
-      console.log(updateUser, 90);
+      // console.log(updateUser, 90);
 
       res.status(201).json({ user: updateUser });
     } catch (error) {
@@ -85,8 +88,10 @@ module.exports = {
 
       const isValid = comparePassword(password, user.password);
       if (!isValid) {
+        console.log("123");
         throw { name: "invalidAccount" };
       } else {
+        console.log("321");
         const token = generateToken({
           _id: user._id,
           email: user.email,
