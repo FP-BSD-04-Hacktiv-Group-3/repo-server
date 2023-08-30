@@ -20,6 +20,7 @@ module.exports = {
       },
       status: {
         type: Sequelize.STRING,
+        defaultValue: 'Paid'
       },
       StoreId: {
         type: Sequelize.INTEGER,

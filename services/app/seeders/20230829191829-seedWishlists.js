@@ -18,7 +18,7 @@ module.exports = {
       el.updatedAt = new Date();
       return el;
     });
-    await queryInterface.bulkInsert("Wishlist", wishlistData, {});
+    await queryInterface.bulkInsert("Wishlists", wishlistData, {});
   },
 
   async down(queryInterface, Sequelize) {
@@ -28,6 +28,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Wishlist", null, {});
+    await queryInterface.bulkDelete("Wishlists", null, {});
   },
 };
