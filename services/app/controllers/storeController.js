@@ -5,7 +5,6 @@ class StoreController {
     try {
       const { id } = request.params;
 
-
       const data = await Store.findByPk(id, {
         include: {
           model: Product,
