@@ -36,7 +36,6 @@ class ProductController {
           model: Image
         }
       });
-
       response.status(200).json(data);
     } catch (error) {
       next(error);
@@ -77,6 +76,25 @@ class ProductController {
             },
           },
         ],
+      });
+
+      if (!data) {
+      }
+
+      response.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async fetchProductByCategory(request, response, next) {
+    try {
+      const { CatId } = request.params;
+
+      const data = await Product.findOne({
+        where: {
+          CategoryId: CatId,
+        },
+        include: Image,
       });
 
       if (!data) {
@@ -205,7 +223,6 @@ class ProductController {
       response.status(200).json({
         message: "Product details updated",
       });
-
     } catch (error) {
       next(error);
     }
@@ -225,7 +242,6 @@ class ProductController {
         message: "Image uploaded",
         url,
       });
-
     } catch (error) {
       next(error);
     }

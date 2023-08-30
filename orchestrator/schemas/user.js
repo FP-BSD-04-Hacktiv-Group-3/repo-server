@@ -49,12 +49,14 @@ type Login {
 
 type Edit{
     email:String
-    role:String
 }
     input EditInput {
     email:String
     password:String
-    role:String
+    address:String
+    phoneNumber:String
+    image: String
+    username:String
     }
 
 type Query{
@@ -137,7 +139,15 @@ const resolvers = {
           password,
           role,
         });
-        // console.log(data);
+
+        const idUser = data.user._id;
+
+        const { data: addStore } = await axios.post(`${APP_URL}/store`, {
+          name: "",
+          UserId: idUser,
+          location: "",
+        });
+
         return data.user;
       } catch (error) {
         console.log(error);
@@ -160,16 +170,30 @@ const resolvers = {
     editUser: async (_, args) => {
       try {
         const { _id } = args;
-        const { email, password, role } = args.editUser;
+        const { username, address, phoneNumber, email, password, image } =
+          args.editUser;
+
+        console.log(args.editUser);
         const { data } = await axios.patch(`${USER_URL}/users/${_id}`, {
-          email,
-          password,
-          role,
+          email: email,
+          password: password,
+          username: username,
+          address: address,
+          phoneNumber: phoneNumber,
         });
+
+        const { data: storeImage } = await axios.put(
+          `${APP_URL}/store/image/${_id}`,
+          {
+            image: image,
+          }
+        );
+        console.log(storeImage, "<< soterimage");
 
         if (data?.user?.modifiedCount === 1) {
           const { data } = await axios.get(`${USER_URL}/users/${_id}`);
-          return data.user;
+
+          return data.user.email;
         }
       } catch (error) {
         console.log(error, "<<< eror");

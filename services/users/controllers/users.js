@@ -66,16 +66,25 @@ module.exports = {
   },
   createUser: async (req, res, next) => {
     try {
-      const { email, password, role = "user" } = req.body;
+      const { email, password } = req.body;
       console.log(req.body);
       const newUser = await User.insertOne({
         email,
         password: encrypt(password),
-        role,
+        role: "user",
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-      res.status(201).json({ user: newUser });
+      console.log(newUser, "<< ini new user");
+      const newProfile = await Profile.insertOne({
+        username: "",
+        address: "",
+        phoneNumber: "",
+        userId: newUser._id,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      res.status(201).json({ user: newUser, profile: newProfile });
     } catch (error) {
       next(error);
     }
@@ -93,23 +102,36 @@ module.exports = {
   },
   editUser: async (req, res, next) => {
     try {
-      let { email, password, role } = req.body;
+      let { username, email, address, phoneNumber, password } = req.body;
+      console.log(req.body, 3213);
 
+      console.log(password, "<req");
       const { id } = req.params;
 
+      console.log(password, "1");
       password = encrypt(password);
+      console.log(password, "2");
 
       const updateUser = await User.updateOne(id, {
-        email,
-        password,
-        role,
+        email: email,
+        password: password,
         updateAt: new Date(),
+      });
+
+      console.log(updateUser);
+
+      const updateProfile = await Profile.updateOne(id, {
+        username: username,
+        address: address,
+        phoneNumber: phoneNumber,
+        updatedAt: new Date(),
       });
 
       // console.log(updateUser, 90);
 
       res.status(201).json({ user: updateUser });
     } catch (error) {
+      console.log(error);
       next(error);
     }
   },
