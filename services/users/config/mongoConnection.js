@@ -6,7 +6,7 @@ let db;
 async function mongoConnection() {
   try {
     await client.connect();
-    db = client.db("TacottaTesting");
+    db = client.db("Tacotta");
 
     return db;
   } catch (error) {

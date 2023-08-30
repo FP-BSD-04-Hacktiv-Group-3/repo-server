@@ -5,7 +5,6 @@ class StoreController {
     try {
       const { id } = request.params;
 
-
       const data = await Store.findByPk(id, {
         include: {
           model: Product,
@@ -14,6 +13,21 @@ class StoreController {
 
       if (!data) {
       }
+
+      response.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async fetchStoreByUserId(request, response, next) {
+    try {
+      const { UserId } = request.params;
+
+      const data = await Store.findOne({
+        where: {
+          UserId,
+        },
+      });
 
       response.status(200).json(data);
     } catch (error) {
