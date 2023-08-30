@@ -16,11 +16,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       price: {
-        type: Sequelize.INTEGER,
-      },
-      status: {
         type: Sequelize.STRING,
-        defaultValue: 'Paid'
+      },
+      stockStatus: {
+        type: Sequelize.STRING,
       },
       StoreId: {
         type: Sequelize.INTEGER,
