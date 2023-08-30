@@ -1,0 +1,37 @@
+[
+  {
+    "OrderId": 1,
+    "productName": "Paper Product",
+    "productPrice": 20000,
+    "quantity": 9,
+    "StoreId": 1
+  },
+  {
+    "OrderId": 1,
+    "productName": "Textile Product",
+    "productPrice": 30000,
+    "quantity": 2,
+    "StoreId": 1
+  },
+  {
+    "OrderId": 1,
+    "productName": "Painting Product",
+    "productPrice": 40000,
+    "quantity": 1,
+    "StoreId": 1
+  },
+  {
+    "OrderId": 2,
+    "productName": "Textile Product",
+    "productPrice": 345000,
+    "quantity": 8,
+    "StoreId": 1
+  },
+  {
+    "OrderId": 2,
+    "productName": "Painting Product",
+    "productPrice": 99000,
+    "quantity": 12,
+    "StoreId": 1
+  }
+]

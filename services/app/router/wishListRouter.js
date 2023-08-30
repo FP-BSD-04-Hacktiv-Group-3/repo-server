@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const {WishListController} = require('../controllers')
+const { WishListController } = require("../controllers");
 
-router.get('/:UserId', WishListController.fetchAll)
+router.get("/:UserId", WishListController.fetchAll);
+router.post('/', WishListController.createWishlist)
+router.delete('/:id', WishListController.deleteWishList)
 
-
-module.exports = {wishListRouter: router}
+module.exports = { wishListRouter: router };

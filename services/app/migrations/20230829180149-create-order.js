@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       BuyerId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
