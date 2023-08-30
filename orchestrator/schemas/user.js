@@ -14,18 +14,25 @@ type Profile {
  type User {
     _id: ID
     email: String
-    password: String
     role: String
     Profile: Profile
     Store: Store
   }
+
+
+
+
 
   type Store {
   name:String
   UserId:String
   location:String
   profileImg:String
+  createdAt:String
+  updatedAt:String
+  totalProduct:Int
   }
+
 
   input UserInput {
     email: String
@@ -83,15 +90,29 @@ const resolvers = {
     getUser: async (_, args) => {
       try {
         const { data } = await axios.get(`${USER_URL}/users/detail/${args.id}`);
-        console.log(data, "<<< data");
+        // console.log(data, "<<< data");
+
         const { data: storeData } = await axios.get(
           `${APP_URL}/store/user/${args.id}`
         );
 
+        // console.log(result, "<<< res");
+
+        const { data: productData } = await axios.get(
+          `${APP_URL}/product/store/${storeData.id}`
+        );
+        // console.log(productData.length, "<<product data");
+
+        // trap condition
+
         const result = {
           ...data.user,
-          Store: storeData || null,
+          Store: {
+            ...storeData,
+            totalProduct: productData.length,
+          },
         };
+
         return result;
       } catch (error) {
         console.log("Error", error);
