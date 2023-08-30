@@ -32,8 +32,11 @@ class ProductController {
         attributes: {
           exclude: ["createdAt", "updatedAt"],
         },
+        include: {
+          model: Image,
+        },
       });
-
+      /// asdsa
       response.status(200).json(data);
     } catch (error) {
       next(error);
