@@ -19,11 +19,8 @@ type Profile {
     Store: Store
   }
 
-
-
-
-
   type Store {
+  id:ID
   name:String
   UserId:String
   location:String
@@ -32,7 +29,6 @@ type Profile {
   updatedAt:String
   totalProduct:Int
   }
-
 
   input UserInput {
     email: String
