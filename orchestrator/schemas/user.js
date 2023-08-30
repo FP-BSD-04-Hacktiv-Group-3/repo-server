@@ -143,9 +143,9 @@ const resolvers = {
         const idUser = data.user._id;
 
         const { data: addStore } = await axios.post(`${APP_URL}/store`, {
-          name: "22222",
+          name: "",
           UserId: idUser,
-          location: "2222",
+          location: "",
         });
 
         return data.user;
