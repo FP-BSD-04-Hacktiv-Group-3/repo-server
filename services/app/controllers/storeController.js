@@ -34,7 +34,6 @@ class StoreController {
       next(error);
     }
   }
-
   static async editStore(request, response, next) {
     try {
       const { id } = request.params;
@@ -65,7 +64,6 @@ class StoreController {
       next(error);
     }
   }
-
   // BELUM TERIMPLEMENTASI SECARA PENUH
   static async createStore(request, response, next) {
     try {
