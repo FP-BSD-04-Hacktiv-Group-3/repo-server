@@ -1,5 +1,7 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+// const { PrismaClient } = require('@prisma/client');
+// const prisma = new PrismaClient();
+
+const prisma = require('./index')
 
 class CartController{
     static async findMany(request, response, next){

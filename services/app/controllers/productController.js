@@ -66,6 +66,18 @@ class ProductController {
         images,
       } = request.body;
 
+      console.log(
+        title,
+        description,
+        price,
+        stock,
+        mainImg,
+        storeId,
+        categoryId,
+        images,
+        123123123
+      );
+
       const option = {
         data: {
           title,
@@ -75,6 +87,7 @@ class ProductController {
           description,
           storeId,
           categoryId,
+          
         },
       };
 
