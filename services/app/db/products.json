@@ -1,162 +1,98 @@
 [
   {
-    "name": "Paper Product",
-    "description": "A wonderful paper product",
-    "price": 3000,
+    "name": "Keramik putih",
+    "description": "Perkenalkan keindahan dan kesempurnaan dalam setiap sentuhan ruang Anda dengan Keramik Putih Murni kami. Diciptakan dengan keahlian tinggi dan rasa estetika yang halus, keramik ini menghadirkan nuansa elegan dan bersih yang akan mengubah ruangan menjadi oasis ketenangan.",
+    "price": 30000,
     "StoreId": 1,
     "CategoryId": 1,
     "stockStatus": "Available"
   },
   {
-    "name": "Textile Product",
-    "description": "A wonderful textile product",
-    "price": 3000,
+    "name": "Batik",
+    "description": "Menampilkan keindahan warisan budaya dalam gaya yang kontemporer, Kain Batik kami adalah karya seni tekstil yang memukau. Setiap potongnya menggabungkan kemahiran tradisional dengan desain yang modern, menciptakan harmoni antara masa lalu dan masa kini.",
+    "price": 50000,
     "StoreId": 1,
     "CategoryId": 2,
     "stockStatus": "Available"
   },
   {
-    "name": "Painting Product",
-    "description": "A wonderful painting product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 3,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Wood Crafts Product",
-    "description": "A wonderful wood crafts product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 4,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Jewelry Making Product",
-    "description": "A wonderful jewelry making product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Candle and Soap Making Product",
-    "description": "A wonderful candle and soap making product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 6,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Pottery and Clay Crafts Product",
-    "description": "A wonderful pottery and clay crafts product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 7,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "DIY Home Decor Product",
-    "description": "A wonderful diy home decor product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 8,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Kids' Crafts Product",
-    "description": "A wonderful kids' crafts product",
-    "price": 3000,
+    "name": "Piring hitam kayu",
+    "description": "Mari merayakan keindahan alam dan sentuhan organik dalam setiap hidangan Anda dengan Piring Kayu Eksklusif kami. Setiap potongnya adalah karya seni yang diciptakan dengan penuh perhatian terhadap detail, menghadirkan harmoni antara fungsi dan estetika.",
+    "price": 15000,
     "StoreId": 1,
     "CategoryId": 9,
     "stockStatus": "Available"
   },
   {
-    "name": "Mixed Media Crafts Product",
-    "description": "A wonderful mixed media crafts product",
-    "price": 3000,
+    "name": "[PO]Bouquet bunga murah",
+    "description": "Mari hadirkan pesona alam ke dalam ruang Anda dengan Bouquet Bunga Elegan kami, sebuah wadah indah yang memeluk dan menghormati keindahan alam bunga. Dibuat dengan rasa estetika yang halus dan perhatian terhadap detail, ember bunga ini menjadi perpaduan sempurna antara fungsi dan dekorasi.",
+    "price": 60000,
+    "StoreId": 1,
+    "CategoryId": 3,
+    "stockStatus": "Available"
+  },
+  {
+    "name": "Boneka crochet kelinci",
+    "description": "Hadiahkan sentuhan kelembutan dan pesona yang menggemaskan dengan Boneka Crochet Kelinci kami. Setiap boneka adalah hasil dari kerajinan tangan yang penuh kasih, menggabungkan seni rajutan dengan daya tarik tak tertahankan dari kelinci yang menggemaskan.",
+    "price": 70000,
+    "StoreId": 2,
+    "CategoryId": 7,
+    "stockStatus": "Available"
+  },
+  {
+    "name": "Bunga Kertas",
+    "description": "Hadirkan pesona abadi alam ke dalam ruang Anda dengan Bunga Kertas Kreatif kami. Setiap bunga adalah masterpiece seni kertas yang dikukus dengan warna-warni yang hidup, menciptakan tampilan indah yang tidak pernah pudar.",
+    "price": 5000,
+    "StoreId": 2,
+    "CategoryId": 8,
+    "stockStatus": "Available"
+  },
+  {
+    "name": "Gelang batu",
+    "description": "Hadiahkan diri Anda atau orang yang Anda cintai dengan Gelang Batu Alam kami, sebuah perhiasan yang tidak hanya mempercantik tampilan, tetapi juga menghadirkan keseimbangan dan kekuatan dari keajaiban alam. Setiap gelang adalah ciptaan yang unik dan memiliki arti mendalam yang terkandung dalam setiap batu.",
+    "price": 60000,
     "StoreId": 1,
     "CategoryId": 10,
     "stockStatus": "Available"
   },
   {
-    "name": "Baking and Cake Decorating Product",
-    "description": "A wonderful baking and cake decorating product",
-    "price": 3000,
+    "name": "Dompet kulit hitam",
+    "description": "Hadiahkan diri Anda keanggunan dan kepraktisan dengan Dompet Kulit Elegan kami, sebuah aksesori yang tidak hanya melindungi harta berharga Anda, tetapi juga menampilkan gaya yang tidak lekang oleh waktu. Setiap dompet adalah perwujudan kemewahan dalam rancangan yang praktis.",
+    "price": 200000,
     "StoreId": 1,
-    "CategoryId": 5,
+    "CategoryId": 9,
     "stockStatus": "Available"
   },
   {
-    "name": "Floral Crafts Product",
-    "description": "A wonderful floral crafts product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
+    "name": "Aneka origami kertas",
+    "description": "Selamat datang dalam dunia kreativitas yang tak terbatas dengan Origami Kertas Kreatif kami. Setiap paket berisi lembaran kertas berkualitas tinggi yang menantang Anda untuk melipat, menggulung, dan membentuk karya seni yang memikat. Tidak hanya sebagai hiburan, ini juga bisa menjadi cara yang unik untuk menghiasi dan mempersonalisasi ruangan Anda.",
+    "price": 10000,
+    "StoreId": 2,
+    "CategoryId": 8,
     "stockStatus": "Available"
   },
   {
-    "name": "Leather Crafts Product",
-    "description": "A wonderful leather crafts product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
+    "name": "Kaligrafi custom",
+    "description": "Hadiahkan diri Anda atau orang yang Anda cintai dengan Kaligrafi Elegan kami, sebuah karya seni tulisan yang menggabungkan keindahan kata dengan kepiawaian seni kaligrafi. Setiap kaligrafi adalah ciptaan yang merangkul estetika dan makna dalam setiap goresan tinta.",
+    "price": 20000,
+    "StoreId": 2,
+    "CategoryId": 8,
     "stockStatus": "Available"
   },
   {
-    "name": "Glass Crafts Product",
-    "description": "A wonderful glass crafts product",
-    "price": 3000,
+    "name": "Dress sulam",
+    "description": "Tampilkan pesona yang menawan dan elegan dengan Dress Sulam kami, sebuah karya busana yang dipenuhi dengan kehalusan sulam dan detail yang memukau. Setiap dress adalah perpaduan sempurna antara keindahan tradisional dan gaya modern, menciptakan tampilan yang tak terlupakan.",
+    "price": 75000,
     "StoreId": 1,
-    "CategoryId": 5,
+    "CategoryId": 6,
     "stockStatus": "Available"
   },
   {
-    "name": "Scrapbooking Product",
-    "description": "A wonderful scrapbooking product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Origami Product",
-    "description": "A wonderful origami product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Sewing and Embroidery Product",
-    "description": "A wonderful sewing and embroidery product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Knitting and Crocheting Product",
-    "description": "A wonderful knitting and crocheting product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Quilting Product",
-    "description": "A wonderful quilting product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
-    "stockStatus": "Available"
-  },
-  {
-    "name": "Metal Crafts Product",
-    "description": "A wonderful metal crafts product",
-    "price": 3000,
-    "StoreId": 1,
-    "CategoryId": 5,
+    "name": "Dompet kulit hitam",
+    "description": "Perkenalkan diri Anda pada kemewahan yang tak lekang oleh waktu dengan Dompet Kulit Hitam Klasik kami. Setiap dompet adalah perpaduan sempurna antara fungsi yang praktis dan gaya yang tak terbantahkan, menawarkan Anda aksesori yang tak hanya bergaya, tetapi juga berkinerja luar biasa.",
+    "price": 90000,
+    "StoreId": 2,
+    "CategoryId": 9,
     "stockStatus": "Available"
   }
 ]

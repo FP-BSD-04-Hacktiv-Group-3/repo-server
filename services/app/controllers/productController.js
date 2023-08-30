@@ -8,7 +8,7 @@ const {
 } = require("../models");
 const { Op } = require("sequelize");
 
-const {logging} = require('../helper')
+const { logging } = require("../helper");
 
 class ProductController {
   static async fetchAll(request, response, next) {
@@ -32,6 +32,9 @@ class ProductController {
         attributes: {
           exclude: ["createdAt", "updatedAt"],
         },
+        include: {
+          model: Image
+        }
       });
 
       response.status(200).json(data);
@@ -87,10 +90,8 @@ class ProductController {
 
   static async createProduct(request, response, next) {
     const trx = await sequelize.transaction();
-
     try {
-      let { name, description, price, StoreId, CategoryId } =
-        request.body;
+      let { name, description, price, StoreId, CategoryId } = request.body;
 
       const stockStatus = "Available";
 
@@ -106,24 +107,23 @@ class ProductController {
         { transaction: trx }
       );
 
-      const injectImages = []
-      for(const el of request.files){
-        
-        const urlReturn = await logging(el)
-        
+      const injectImages = [];
+      for (const el of request.files) {
+        const urlReturn = await logging(el);
+
         const obj = {
           ProductId: product.id,
-          imageUrl: urlReturn
-        }
+          imageUrl: urlReturn,
+        };
 
-        console.log(obj, 123123123123)
+        console.log(obj, 123123123123);
 
-        injectImages.push(obj)
+        injectImages.push(obj);
       }
 
       await Image.bulkCreate(injectImages, {
-        transaction: trx 
-      })
+        transaction: trx,
+      });
 
       await trx.commit();
 
@@ -197,16 +197,16 @@ class ProductController {
   // TESTING UPLOAD AJA
   static async multiUpload(request, response, next) {
     try {
-      let url = ''
+      let url = "";
 
-      for(const el of request.files){
-        const urlReturn = await logging(el)
-        url += urlReturn + '!@#$%'
+      for (const el of request.files) {
+        const urlReturn = await logging(el);
+        url += urlReturn + "!@#$%";
       }
-  
+
       response.status(200).json({
         message: "Image uploaded",
-        url
+        url,
       });
     } catch (error) {
       next(error);
