@@ -1,3 +1,4 @@
 const { errorHandler } = require("./errorHandler");
+const { upload } = require("./multer");
 
-module.exports = { errorHandler };
+module.exports = { errorHandler, upload };

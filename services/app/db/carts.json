@@ -13,5 +13,17 @@
     "ProductId": "3",
     "UserId": "64ed5f7942e9c21d8fe5e699",
     "quantity": "1"
+  },
+  {
+    "ProductId": "1",
+    "UserId": "64ed60c4bc5f511ff91ed977"
+  },
+  {
+    "ProductId": "2",
+    "UserId": "64ed60c4bc5f511ff91ed977"
+  },
+  {
+    "ProductId": "3",
+    "UserId": "64ed60c4bc5f511ff91ed977"
   }
 ]
