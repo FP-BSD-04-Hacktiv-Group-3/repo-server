@@ -2,11 +2,29 @@ const axios = require("axios");
 const redis = require("../config/redis");
 
 const typeDefs = `#graphql
+
+type Profile {
+    _id: ID
+    username: String
+    address:String
+    phoneNumber:String
+    userId: String
+  }
+
  type User {
     _id: ID
     email: String
     password: String
     role: String
+    Profile: Profile
+    Store: Store
+  }
+
+  type Store {
+  name:String
+  UserId:String
+  location:String
+  profileImg:String
   }
 
   input UserInput {
@@ -49,6 +67,7 @@ type Mutation{
 `;
 
 const USER_URL = process.env.USER_URL || "http://localhost:4001";
+const APP_URL = process.env.APP_URL || "http://localhost:4002";
 
 const resolvers = {
   Query: {
@@ -63,9 +82,17 @@ const resolvers = {
     },
     getUser: async (_, args) => {
       try {
-        const { data } = await axios.get(`${USER_URL}/users/${args.id}`);
-        // console.log(data);
-        return data.user;
+        const { data } = await axios.get(`${USER_URL}/users/detail/${args.id}`);
+        console.log(data, "<<< data");
+        const { data: storeData } = await axios.get(
+          `${APP_URL}/store/user/${args.id}`
+        );
+
+        const result = {
+          ...data.user,
+          Store: storeData || null,
+        };
+        return result;
       } catch (error) {
         console.log("Error", error);
       }
