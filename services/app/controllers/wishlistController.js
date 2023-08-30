@@ -53,6 +53,7 @@ class WishListController {
       const data = await Wishlist.findByPk(id);
 
       if (!data) {
+        throw { name: "notFound" };
       }
 
       await Wishlist.destroy({
