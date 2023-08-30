@@ -38,7 +38,7 @@ class StoreController {
     try {
       const { id } = request.params;
 
-      const { name, location } = request.body;
+      const { name, location, profileImg } = request.body;
 
       const data = await Store.findByPk(id);
 
@@ -49,6 +49,7 @@ class StoreController {
         {
           name,
           location,
+          profileImg,
         },
         {
           where: {
