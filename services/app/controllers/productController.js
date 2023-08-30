@@ -33,10 +33,9 @@ class ProductController {
           exclude: ["createdAt", "updatedAt"],
         },
         include: {
-          model: Image,
-        },
+          model: Image
+        }
       });
-      /// asdsa
       response.status(200).json(data);
     } catch (error) {
       next(error);
@@ -109,7 +108,6 @@ class ProductController {
 
   static async createProduct(request, response, next) {
     const trx = await sequelize.transaction();
-
     try {
       let { name, description, price, StoreId, CategoryId } = request.body;
 

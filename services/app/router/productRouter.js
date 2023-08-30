@@ -8,6 +8,7 @@ router.get("/:id", ProductController.fetchProductDetail);
 router.get("/byCat/:CatId", ProductController.fetchProductByCategory);
 router.post("/", upload.array("images", 5), ProductController.createProduct);
 router.delete("/:id", ProductController.deleteProduct);
+router.put('/:id', ProductController.editProduct)
 
 // TESTING ROUTER
 router.post(
