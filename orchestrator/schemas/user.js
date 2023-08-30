@@ -139,7 +139,15 @@ const resolvers = {
           password,
           role,
         });
-        // console.log(data);
+
+        const idUser = data.user._id;
+
+        const { data: addStore } = await axios.post(`${APP_URL}/store`, {
+          name: "22222",
+          UserId: idUser,
+          location: "2222",
+        });
+
         return data.user;
       } catch (error) {
         console.log(error);
