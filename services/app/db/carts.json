@@ -1,0 +1,17 @@
+[
+  {
+    "ProductId": "1",
+    "UserId": "64ed5f7942e9c21d8fe5e699",
+    "quantity": "2"
+  },
+  {
+    "ProductId": "2",
+    "UserId": "64ed5f7942e9c21d8fe5e699",
+    "quantity": "3"
+  },
+  {
+    "ProductId": "3",
+    "UserId": "64ed5f7942e9c21d8fe5e699",
+    "quantity": "1"
+  }
+]
