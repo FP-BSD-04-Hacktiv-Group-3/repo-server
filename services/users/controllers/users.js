@@ -27,6 +27,19 @@ module.exports = {
       next(error);
     }
   },
+  findOneUserByUserId: async (req, res, next) => {
+    try {
+      const { id: userId } = req.params;
+      console.log(userId);
+      const user = await User.findOne(id);
+      if (!user) {
+        throw { name: "invalidAccount" };
+      }
+      res.status(200).json({ message: `Find One User with id ${id}`, user });
+    } catch (error) {
+      next(error);
+    }
+  },
   createUser: async (req, res, next) => {
     try {
       const { email, password, role = "user" } = req.body;

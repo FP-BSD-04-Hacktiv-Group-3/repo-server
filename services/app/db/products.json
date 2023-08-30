@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Paper Product",
+    "description": "A wonderful paper product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 1
+  },
+  {
+    "name": "Textile Product",
+    "description": "A wonderful textile product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 2
+  },
+  {
+    "name": "Painting Product",
+    "description": "A wonderful painting product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 3
+  },
+  {
+    "name": "Wood Crafts Product",
+    "description": "A wonderful wood crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 4
+  },
+  {
+    "name": "Jewelry Making Product",
+    "description": "A wonderful jewelry making product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Candle and Soap Making Product",
+    "description": "A wonderful candle and soap making product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 6
+  },
+  {
+    "name": "Pottery and Clay Crafts Product",
+    "description": "A wonderful pottery and clay crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 7
+  },
+  {
+    "name": "DIY Home Decor Product",
+    "description": "A wonderful diy home decor product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 8
+  },
+  {
+    "name": "Kids' Crafts Product",
+    "description": "A wonderful kids' crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 9
+  },
+  {
+    "name": "Mixed Media Crafts Product",
+    "description": "A wonderful mixed media crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 10
+  },
+  {
+    "name": "Baking and Cake Decorating Product",
+    "description": "A wonderful baking and cake decorating product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Floral Crafts Product",
+    "description": "A wonderful floral crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Leather Crafts Product",
+    "description": "A wonderful leather crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Glass Crafts Product",
+    "description": "A wonderful glass crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Scrapbooking Product",
+    "description": "A wonderful scrapbooking product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Origami Product",
+    "description": "A wonderful origami product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Sewing and Embroidery Product",
+    "description": "A wonderful sewing and embroidery product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Knitting and Crocheting Product",
+    "description": "A wonderful knitting and crocheting product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Quilting Product",
+    "description": "A wonderful quilting product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  },
+  {
+    "name": "Metal Crafts Product",
+    "description": "A wonderful metal crafts product",
+    "price": 3000,
+    "StoreId": 1,
+    "CategoryId": 5
+  }
+]
