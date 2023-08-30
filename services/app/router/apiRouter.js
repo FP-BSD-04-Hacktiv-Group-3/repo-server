@@ -1,7 +1,6 @@
 const express = require("express");
 const axios = require("axios");
 const router = require("express").Router();
-
 // Config Defaults Axios dengan Detail Akun Rajaongkir
 axios.defaults.baseURL = "https://api.rajaongkir.com/starter";
 axios.defaults.headers.common["key"] = "dcabef88ca76133a71710917cc91a4ed";
