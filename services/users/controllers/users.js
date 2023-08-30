@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const { getDB } = require("../config/mongoConnection");
 const User = require("../models/users");
+const Profile = require("../models/profiles");
 const bcrypt = require("bcryptjs");
 const { encrypt, comparePassword } = require("../helpers/encrypt");
 const { generateToken } = require("../helpers/jwt");
@@ -23,6 +24,29 @@ module.exports = {
         throw { name: "invalidAccount" };
       }
       res.status(200).json({ message: `Find One User with id ${id}`, user });
+    } catch (error) {
+      next(error);
+    }
+  },
+  fetchUserDetail: async (req, res, next) => {
+    try {
+      const { UserId } = req.params;
+      const user = await User.findOne(UserId);
+      if (!user) {
+        console.log("user1");
+        throw { name: "invalidAccount" };
+      }
+
+      const profile = await Profile.findOneByUserId(UserId);
+      if (!profile) {
+        console.log("profile1");
+        throw { name: "invalidAccount" };
+      }
+
+      user.Profile = profile;
+      res
+        .status(200)
+        .json({ message: `Find One User with id ${UserId}`, user });
     } catch (error) {
       next(error);
     }
