@@ -17,6 +17,13 @@ class Profile {
 
     return profile;
   }
+  static async findOneByUserId(id) {
+    const profile = await this.profileCollection().findOne({
+      userId: new ObjectId(id),
+    });
+
+    return profile;
+  }
   static async insertOne(payload) {
     const profile = await this.profileCollection().insertOne(payload);
 

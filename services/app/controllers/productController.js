@@ -137,6 +137,22 @@ class ProductController {
     }
   }
 
+  static async fetchProductStore(request, response, next) {
+    try {
+      const { id: StoreId } = request.params;
+
+      const data = await Product.findAll({
+        where: {
+          StoreId,
+        },
+      });
+
+      response.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async deleteProduct(request, response, next) {
     try {
       const { id } = request.params;
@@ -189,6 +205,7 @@ class ProductController {
       response.status(200).json({
         message: "Product details updated",
       });
+
     } catch (error) {
       next(error);
     }
@@ -208,6 +225,7 @@ class ProductController {
         message: "Image uploaded",
         url
       });
+
     } catch (error) {
       next(error);
     }
