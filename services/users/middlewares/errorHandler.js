@@ -5,18 +5,19 @@ const errorHandlers = (err, req, res, next) => {
   let message = "";
 
   switch (err.name) {
-    case "Error not found":
-      statusCode = 404;
-      message = "Error not found";
-      break;
+    // case "Error not found":
+    //   statusCode = 404;
+    //   message = "Error not found";
+    //   break;
     case "invalidAccount":
+    case "BSONError":
       statusCode = 401;
       message = "Invalid Email / Password";
       break;
-    case "NotAuthorization":
-      statusCode = 403;
-      message = "Unauthorize";
-      break;
+    // case "NotAuthorization":
+    //   statusCode = 403;
+    //   message = "Unauthorize";
+    //   break;
     default:
       statusCode = 500;
       message = "Internal Server Error";

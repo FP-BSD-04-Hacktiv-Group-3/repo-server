@@ -18,6 +18,7 @@ class User {
     return user;
   }
   static async findOneByEmail(email) {
+    const datas = await this.findAll();
     const user = await this.userCollection().findOne({
       email,
     });
