@@ -101,6 +101,7 @@ class StoreController {
 
       await Store.create({
         name,
+        UserId,
         location,
       });
 
