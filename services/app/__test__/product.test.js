@@ -19,6 +19,18 @@ describe("Product Endpoints", function () {
       cascade: true,
       restartIdentity: true,
     });
+
+    await Category.destroy({
+      truncate: true,
+      cascade: true,
+      restartIdentity: true,
+    });
+
+    await Store.destroy({
+      truncate: true,
+      cascade: true,
+      restartIdentity: true,
+    });
   });
 
   it("Fetch Products without any filters", async function () {

@@ -65,36 +65,37 @@ class StoreController {
       next(error);
     }
   }
-  static async editImage(request, response, next) {
-    try {
-      const { UserId } = request.params;
+  // static async editImage(request, response, next) {
+  //   try {
+  //     const { UserId } = request.params;
 
-      const { image } = request.body;
+  //     const { image } = request.body;
 
-      const data = await Store.findByPk(UserId);
+  //     const data = await Store.findByPk(UserId);
 
-      if (!data) {
-      }
-      console.log(UserId, 44);
+  //     if (!data) {
+  //     }
+  //     console.log(UserId, 44);
 
-      await Store.update(
-        {
-          profileImg: image,
-        },
-        {
-          where: {
-            UserId: UserId,
-          },
-        }
-      );
+  //     await Store.update(
+  //       {
+  //         profileImg: image,
+  //       },
+  //       {
+  //         where: {
+  //           UserId: UserId,
+  //         },
+  //       }
+  //     );
 
-      response.status(200).json({
-        message: "Store image edited",
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
+  //     response.status(200).json({
+  //       message: "Store image edited",
+  //     });
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
+
   // BELUM TERIMPLEMENTASI SECARA PENUH
   static async createStore(request, response, next) {
     try {

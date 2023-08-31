@@ -11,12 +11,14 @@ class CartController {
         },
         include: {
           model: Product,
-          include: [{
-            model: Image,
-            
-          }, {
-            model: Store
-          }],
+          include: [
+            {
+              model: Image,
+            },
+            {
+              model: Store,
+            },
+          ],
         },
       });
 
