@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1693463530000" clover="3.2.0">
-  <project timestamp="1693463530000" name="All files">
-    <metrics statements="491" coveredstatements="290" conditionals="41" coveredconditionals="23" methods="71" coveredmethods="33" elements="603" coveredelements="346" complexity="0" loc="491" ncloc="491" packages="6" files="38" classes="38"/>
+<coverage generated="1693466422412" clover="3.2.0">
+  <project timestamp="1693466422412" name="All files">
+    <metrics statements="483" coveredstatements="301" conditionals="43" coveredconditionals="25" methods="70" coveredmethods="35" elements="596" coveredelements="361" complexity="0" loc="483" ncloc="483" packages="6" files="38" classes="38"/>
     <package name="app">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\app.js">
@@ -19,7 +19,7 @@
       </file>
     </package>
     <package name="app.controllers">
-      <metrics statements="260" coveredstatements="89" conditionals="30" coveredconditionals="16" methods="34" coveredmethods="10"/>
+      <metrics statements="253" coveredstatements="101" conditionals="32" coveredconditionals="18" methods="33" coveredmethods="12"/>
       <file name="apiController.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\controllers\apiController.js">
         <metrics statements="19" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
@@ -186,7 +186,7 @@
         <line num="53" count="4" type="stmt"/>
       </file>
       <file name="productController.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\controllers\productController.js">
-        <metrics statements="70" coveredstatements="31" conditionals="12" coveredconditionals="7" methods="8" coveredmethods="4"/>
+        <metrics statements="63" coveredstatements="43" conditionals="14" coveredconditionals="9" methods="7" coveredmethods="6"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
@@ -200,63 +200,56 @@
         <line num="30" count="4" type="stmt"/>
         <line num="39" count="4" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="81" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="84" count="1" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="100" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="103" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="111" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="114" count="0" type="stmt"/>
-        <line num="116" count="0" type="stmt"/>
-        <line num="128" count="0" type="stmt"/>
-        <line num="129" count="0" type="stmt"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="82" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="93" count="2" type="stmt"/>
+        <line num="94" count="2" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="103" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="116" count="1" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="120" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
         <line num="137" count="0" type="stmt"/>
-        <line num="139" count="0" type="stmt"/>
         <line num="142" count="0" type="stmt"/>
-        <line num="146" count="0" type="stmt"/>
-        <line num="148" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
+        <line num="144" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
+        <line num="151" count="0" type="stmt"/>
         <line num="153" count="0" type="stmt"/>
-        <line num="154" count="0" type="stmt"/>
-        <line num="159" count="0" type="stmt"/>
-        <line num="160" count="0" type="stmt"/>
-        <line num="162" count="0" type="stmt"/>
-        <line num="168" count="0" type="stmt"/>
-        <line num="170" count="0" type="stmt"/>
-        <line num="175" count="1" type="stmt"/>
-        <line num="176" count="1" type="stmt"/>
-        <line num="177" count="1" type="stmt"/>
-        <line num="179" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="157" count="1" type="stmt"/>
+        <line num="158" count="1" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="167" count="0" type="stmt"/>
+        <line num="173" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="181" count="1" type="stmt"/>
         <line num="182" count="1" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
+        <line num="185" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="188" count="1" type="stmt"/>
-        <line num="192" count="0" type="stmt"/>
-        <line num="197" count="1" type="stmt"/>
-        <line num="198" count="1" type="stmt"/>
-        <line num="200" count="1" type="stmt"/>
-        <line num="202" count="1" type="stmt"/>
-        <line num="204" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="194" count="1" type="stmt"/>
+        <line num="198" count="0" type="stmt"/>
+        <line num="204" count="1" type="stmt"/>
+        <line num="205" count="1" type="stmt"/>
         <line num="207" count="1" type="stmt"/>
-        <line num="223" count="1" type="stmt"/>
-        <line num="227" count="0" type="stmt"/>
-        <line num="233" count="0" type="stmt"/>
+        <line num="209" count="1" type="stmt"/>
+        <line num="211" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="214" count="1" type="stmt"/>
+        <line num="230" count="1" type="stmt"/>
         <line num="234" count="0" type="stmt"/>
-        <line num="236" count="0" type="stmt"/>
-        <line num="237" count="0" type="stmt"/>
-        <line num="238" count="0" type="stmt"/>
-        <line num="241" count="0" type="stmt"/>
-        <line num="246" count="0" type="stmt"/>
-        <line num="251" count="4" type="stmt"/>
+        <line num="241" count="4" type="stmt"/>
       </file>
       <file name="storeController.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\controllers\storeController.js">
         <metrics statements="26" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
@@ -481,7 +474,7 @@
       </file>
     </package>
     <package name="app.router">
-      <metrics statements="109" coveredstatements="95" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <metrics statements="108" coveredstatements="94" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
       <file name="apiRouter.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\router\apiRouter.js">
         <metrics statements="23" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
@@ -591,7 +584,7 @@
         <line num="9" count="4" type="stmt"/>
       </file>
       <file name="productRouter.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\router\productRouter.js">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -602,8 +595,7 @@
         <line num="9" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
       </file>
       <file name="storeRouter.js" path="C:\Users\Victor\Documents\Final Project\repo-server\services\app\router\storeRouter.js">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

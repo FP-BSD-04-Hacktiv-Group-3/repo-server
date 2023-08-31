@@ -33,12 +33,13 @@ class ProductController {
           exclude: ["createdAt", "updatedAt"],
         },
         include: {
-          model: Image
-        }
+          model: Image,
+        },
       });
       response.status(200).json(data);
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
 
@@ -83,9 +84,11 @@ class ProductController {
 
       response.status(200).json(data);
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
+
   static async fetchProductByCategory(request, response, next) {
     try {
       const { CatId } = request.params;
@@ -102,7 +105,8 @@ class ProductController {
 
       response.status(200).json(data);
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
 
@@ -113,6 +117,7 @@ class ProductController {
 
       const stockStatus = "Available";
 
+      if (!name) throw { name: "name_required" };
       const product = await Product.create(
         {
           name,
@@ -151,7 +156,7 @@ class ProductController {
     } catch (error) {
       await trx.rollback();
       console.log(error, 35);
-      next(error);
+      // next(error);
     }
   }
 
@@ -167,7 +172,8 @@ class ProductController {
 
       response.status(200).json(data);
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
 
@@ -189,7 +195,8 @@ class ProductController {
         message: "Product deleted successfully",
       });
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
 
@@ -224,28 +231,11 @@ class ProductController {
         message: "Product details updated",
       });
     } catch (error) {
-      next(error);
+      console.log(error);
+      // next(error);
     }
   }
 
-  // TESTING UPLOAD AJA
-  static async multiUpload(request, response, next) {
-    try {
-      let url = "";
-
-      for (const el of request.files) {
-        const urlReturn = await logging(el);
-        url += urlReturn + "!@#$%";
-      }
-
-      response.status(200).json({
-        message: "Image uploaded",
-        url,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
 }
 
 module.exports = { ProductController };
