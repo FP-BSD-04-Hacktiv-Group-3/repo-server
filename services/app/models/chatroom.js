@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   ChatRoom.init(
     {
-      imageUrl: DataTypes.STRING,
+      ChatId: DataTypes.STRING,
       UserId: DataTypes.STRING,
       StoreId: DataTypes.INTEGER,
     },

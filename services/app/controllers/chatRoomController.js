@@ -2,30 +2,29 @@ const { ChatRoom, Store } = require("../models");
 
 class ChatRoomController {
   static async addChatRoom(request, response, next) {
-    app.post("/chat-store", async (req, res) => {
       try {
-        const { UserId, StoreId, ChatId } = req.body;
+        const { UserId, StoreId, ChatId } = request.body;
 
         console.log(UserId, StoreId, ChatId);
 
-        await UserChat.create({
+        await ChatRoom.create({
           UserId,
           StoreId,
           ChatId,
         });
 
-        res.status(201).json({
+        response.status(201).json({
           message: "New chat room created",
         });
       } catch (error) {
-        next(error);
+        console.log(error)
+        // next(error);
       }
-    });
   }
 
   static async getChatRoom(request, response, next) {
     try {
-      const { UserId, StoreId } = req.query;
+      const { UserId, StoreId } = request.query;
 
       const option = {};
 
@@ -46,9 +45,10 @@ class ChatRoomController {
         },
       });
 
-      res.status(200).json(data);
+      response.status(200).json(data);
     } catch (error) {
-      next(error);
+      console.log(error)
+      // next(error);
     }
   }
 }

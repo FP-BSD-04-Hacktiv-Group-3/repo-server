@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      imageUrl: {
+      ChatId: {
         type: Sequelize.STRING,
       },
       UserId: {
