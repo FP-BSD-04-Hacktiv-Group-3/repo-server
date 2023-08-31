@@ -8,6 +8,7 @@ class ApiController {
         // Set to true if you want Production Environment (accept real transaction).
         isProduction: false,
         serverKey: process.env.MIDTRANS_SERVER_KEY,
+        clientKey: process.env.MIDTRANS_CLIENT_KEY,
       });
 
       const { orderId: orderId } = req.params; // harusnya order id

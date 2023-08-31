@@ -45,7 +45,7 @@ class CartController {
 
       response.status(201).json({
         statusCode: 201,
-        data: "Successfully create a Cart",
+        message: "Successfully create a Cart",
       });
     } catch (error) {
       console.log(error);
@@ -74,7 +74,7 @@ class CartController {
 
       response.status(200).json({
         statusCode: 200,
-        data: "Successfully update a Cart " + id,
+        message: "Successfully update a Cart " + id,
       });
     } catch (error) {
       console.log(error);
@@ -94,7 +94,7 @@ class CartController {
 
       response.status(200).json({
         statusCode: 200,
-        data: "Successfully delete a Cart " + id,
+        message: "Successfully delete a Cart " + id,
       });
     } catch (error) {
       console.log(error);
@@ -114,7 +114,7 @@ class CartController {
 
       response.status(200).json({
         statusCode: 200,
-        data: "Successfully delete Carts by userId: " + UserId,
+        message: "Successfully delete Carts by userId: " + UserId,
       });
     } catch (error) {
       console.log(error);

@@ -42,7 +42,7 @@ class CategoryController {
       });
       response.status(201).json({
         statusCode: 201,
-        data: "Successfully create",
+        message: "Successfully create",
       });
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ class CategoryController {
       );
       response.status(201).json({
         statusCode: 201,
-        data: "Successfully update " + id,
+        message: "Successfully update " + id,
       });
     } catch (error) {
       console.log(error);
@@ -82,7 +82,7 @@ class CategoryController {
       });
       response.status(200).json({
         statusCode: 200,
-        data: "Successfully deleted",
+        message: "Successfully deleted",
       });
     } catch (error) {
       console.log(error);
