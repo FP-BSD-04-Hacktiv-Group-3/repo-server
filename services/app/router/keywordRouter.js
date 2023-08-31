@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Keyword = require("../controllers/keywordController");
+const KeywordController = require("../controllers/keywordController");
 
-router.post("/addKeyword", Keyword.create);
-router.delete("/:id", Keyword.delete);
+router.post("/addKeyword", KeywordController.create);
+router.delete("/:id", KeywordController.delete);
 
 module.exports = router;
