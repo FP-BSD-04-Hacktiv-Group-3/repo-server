@@ -1,4 +1,4 @@
-const { Cart, Product, Image } = require("../models"); // Import your Sequelize model
+const { Cart, Product, Image, Store } = require("../models"); // Import your Sequelize model
 
 class CartController {
   static async findManyByUserId(request, response, next) {
@@ -11,9 +11,12 @@ class CartController {
         },
         include: {
           model: Product,
-          include: {
+          include: [{
             model: Image,
-          },
+            
+          }, {
+            model: Store
+          }],
         },
       });
 
