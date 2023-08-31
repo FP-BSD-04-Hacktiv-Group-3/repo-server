@@ -1,4 +1,4 @@
-const { Wishlist, Product } = require("../models");
+const { Wishlist, Product, Image } = require("../models");
 
 class WishListController {
   // ID USER DAPET DARI PARAMS
@@ -17,6 +17,9 @@ class WishListController {
           model: Product,
           attributes: {
             exclude: ["createdAt", "updatedAt"],
+          },
+          include: {
+            model: Image,
           },
         },
       });
@@ -53,6 +56,7 @@ class WishListController {
       const data = await Wishlist.findByPk(id);
 
       if (!data) {
+        throw { name: "notFound" };
       }
 
       await Wishlist.destroy({
