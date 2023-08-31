@@ -1,4 +1,4 @@
-const { Cart } = require("../models"); // Import your Sequelize model
+const { Cart, Product, Image } = require("../models"); // Import your Sequelize model
 
 class CartController {
   static async findManyByUserId(request, response, next) {
@@ -8,6 +8,12 @@ class CartController {
       const data = await Cart.findAll({
         where: {
           UserId,
+        },
+        include: {
+          model: Product,
+          include: {
+            model: Image,
+          },
         },
       });
 
