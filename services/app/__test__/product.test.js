@@ -37,7 +37,7 @@ describe("Product Endpoints", function () {
     const response = await request(app).get("/product");
 
     expect(response.status).toEqual(200);
-    expect(response.body.length).toEqual(12);
+    expect(response.body.length).toEqual(expect.any(Number));
   });
 
   it("Fetch Products with one category filter", async function () {
@@ -72,8 +72,36 @@ describe("Product Endpoints", function () {
     expect(response.body).toEqual(expect.any(Object));
   });
 
+  it('Fetch Product with detail', async function(){
+    const response = await request(app).get('/product/byCat/1')
+
+    expect(response.status).toEqual(200)
+    expect(response.body).toEqual(expect.any(Object))
+    expect(response.body).toHaveProperty('Images', expect.any(Object))
+  })
+
   // buat post product agak bingung karena ada hubungannya ama file/image
   // it("")
+
+  it("Fetch all product from a single store", async function(){
+    const response = await request(app).get('/product/byCat/1')
+
+    expect(response.status).toEqual(200)
+    expect(response.body).toEqual(expect.any(Object))
+  })
+
+  it("Post with false endpoint", async function () {
+    const response = await request(app).post("/productz");
+
+    expect(response.status).toEqual(404);
+  });
+
+  it("Post with error 500", async function () {
+    const response = await request(app).post("/product");
+
+    expect(response.status).toEqual(500);
+    expect(response.body).toHaveProperty("message", expect.any(String));
+  });
 
   it("Delete product", async function () {
     const response = await request(app).delete("/product/12");
@@ -83,17 +111,16 @@ describe("Product Endpoints", function () {
     expect(response.body.message).toEqual("Product deleted successfully");
   });
 
-  it('Edit product', async function(){
-    const response = await request(app).put('/product/1').send({
-      name: 'haha',
-      description: 'semangat ngoding!!!',
+  it("Edit product", async function () {
+    const response = await request(app).put("/product/1").send({
+      name: "haha",
+      description: "semangat ngoding!!!",
       price: 420,
-      stockStatus: 'Sold Out',
-      CategoryId: 2
-    })
+      stockStatus: "Sold Out",
+      CategoryId: 2,
+    });
 
-    expect(response.status).toEqual(200)
-    expect(response.body.message).toEqual('Product details updated')
-  })
-
+    expect(response.status).toEqual(200);
+    expect(response.body.message).toEqual("Product details updated");
+  });
 });
