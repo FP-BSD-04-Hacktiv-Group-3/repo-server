@@ -8,6 +8,9 @@ class StoreController {
       const data = await Store.findByPk(id, {
         include: {
           model: Product,
+          attributes: {
+            exclude: ["updatedAt"],
+          },
         },
       });
 
@@ -27,13 +30,20 @@ class StoreController {
         where: {
           UserId,
         },
+        attributes: {
+          exclude: ["updatedAt"],
+        },
       });
+
+      if (!data) throw { name: "StoreNotFound" };
 
       response.status(200).json(data);
     } catch (error) {
       next(error);
     }
   }
+
+  // belum handle profile imagenya, kayanya buat endpoint baru khusus untuk image
   static async editStore(request, response, next) {
     try {
       const { id } = request.params;
@@ -42,8 +52,7 @@ class StoreController {
 
       const data = await Store.findByPk(id);
 
-      if (!data) {
-      }
+      if (!data) throw { name: "StoreNotFound" };
 
       await Store.update(
         {
@@ -96,7 +105,7 @@ class StoreController {
   //   }
   // }
 
-  // BELUM TERIMPLEMENTASI SECARA PENUH
+  // BELUM TERIMPLEMENTASI SECARA PENUH, soalnya profile image blm ditambah
   static async createStore(request, response, next) {
     try {
       const { name, location, UserId, profileImg } = request.body;
