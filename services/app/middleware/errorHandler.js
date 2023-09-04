@@ -6,9 +6,14 @@ function errorHandler(error, request, response, next) {
   console.log(error, 5, "error handler");
 
   switch (error.name) {
+    case "StoreNotFound":
+      statusCode = 404;
+      message = "Toko tidak ditemukan";
+      break;
+
     case "DataNotFound":
       statusCode = 404;
-      message = "Data tidak ditemukan";
+      message = "Produk tidak ditemukan";
       break;
 
     case "CannotUpdate":
@@ -16,10 +21,15 @@ function errorHandler(error, request, response, next) {
       message = "Total barang tidak boleh dibawah 1";
       break;
 
-      case "DuplicateNotAllowed":
-        statusCode = 400;
-        message = "Item ini sudah ditambahkan di keranjang kamu";
-        break;
+    case "DuplicateNotAllowed":
+      statusCode = 400;
+      message = "Item ini sudah ditambahkan di keranjang kamu";
+      break;
+
+    case "DuplicateWishlistNotAllowed":
+      statusCode = 400;
+      message = "Item ini sudah ditambahkan di wishlist kamu";
+      break;
   }
 
   response.status(statusCode).json({

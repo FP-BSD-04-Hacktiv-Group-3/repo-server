@@ -11,10 +11,8 @@ class CategoryController {
         };
       }
       const data = await Category.findAll(options);
-      response.status(200).json({
-        statusCode: 200,
-        data,
-      });
+
+      response.status(200).json(data);
     } catch (error) {
       next(error);
     }
@@ -32,6 +30,7 @@ class CategoryController {
       next(error);
     }
   }
+
   static async create(request, response, next) {
     try {
       const { name } = request.body;
@@ -43,10 +42,10 @@ class CategoryController {
         message: "Successfully create",
       });
     } catch (error) {
-      // console.log(error);
-      // next(error);
+      next(error);
     }
   }
+
   static async update(request, response, next) {
     try {
       const { id } = request.params;
@@ -66,8 +65,7 @@ class CategoryController {
         message: "Successfully update " + id,
       });
     } catch (error) {
-      // console.log(error);
-      // next(error);
+      next(error);
     }
   }
   static async delete(request, response, next) {
@@ -83,8 +81,7 @@ class CategoryController {
         message: "Successfully deleted",
       });
     } catch (error) {
-      // console.log(error);
-      // next(error);
+      next(error);
     }
   }
 }

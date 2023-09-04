@@ -16,7 +16,7 @@ class OrderController {
 
       response.status(200).json(data);
     } catch (error) {
-      // next(error);
+      next(error);
     }
   }
 
@@ -35,7 +35,7 @@ class OrderController {
 
       response.status(200).json(data);
     } catch (error) {
-      // next(error);
+      next(error);
     }
   }
 

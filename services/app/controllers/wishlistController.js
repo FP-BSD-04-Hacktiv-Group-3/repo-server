@@ -20,6 +20,9 @@ class WishListController {
           },
           include: {
             model: Image,
+            limit: 1,
+            attributes: ["imageUrl"],
+            order: [["id", "ASC"]],
           },
         },
       });
@@ -30,11 +33,23 @@ class WishListController {
     }
   }
 
-  // SEMUA DIKIRIMKAN MELALUI REQ.BODY
-  // HANDLE KALO ADA DUPLICATE PRODUCTNYA (NANTI), ATAU KALO PRODUCTNYA GAADA
   static async createWishlist(request, response, next) {
     try {
       const { UserId, ProductId } = request.body;
+
+      const product = await Product.findByPk(ProductId);
+
+      if (!product) throw { name: "DataNotFound" };
+
+      const userWishlist = await Wishlist.findAll({
+        where: {
+          UserId
+        }
+      })
+
+      const findWishlist = userWishlist.find(el => el.ProductId === +ProductId)
+
+      if(findWishlist) throw { name: "DuplicateWishlistNotAllowed" };
 
       await Wishlist.create({
         UserId,
@@ -42,7 +57,7 @@ class WishListController {
       });
 
       response.status(201).json({
-        message: "New item added to wishlist",
+        message: `${product.name} berhasil ditambahkan ke daftar wishlist`,
       });
     } catch (error) {
       next(error);
@@ -53,10 +68,15 @@ class WishListController {
     try {
       const { id } = request.params;
 
-      const data = await Wishlist.findByPk(id);
+      const data = await Wishlist.findByPk(id, {
+        include: {
+          model: Product,
+          attributes: ['name']
+        }
+      });
 
       if (!data) {
-        throw { name: "notFound" };
+        throw { name: "DataNotFound" };
       }
 
       await Wishlist.destroy({
@@ -66,7 +86,7 @@ class WishListController {
       });
 
       response.status(200).json({
-        message: "Wishlist deleted",
+        message: `${data.Product.name} berhasil dihapus dari wishlist`,
       });
     } catch (error) {
       next(error);

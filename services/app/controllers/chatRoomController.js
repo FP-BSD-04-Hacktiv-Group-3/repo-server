@@ -14,11 +14,10 @@ class ChatRoomController {
         });
 
         response.status(201).json({
-          message: "New chat room created",
+          message: "Chat room dibuat",
         });
       } catch (error) {
-        console.log(error)
-        // next(error);
+        next(error);
       }
   }
 
@@ -48,7 +47,7 @@ class ChatRoomController {
       response.status(200).json(data);
     } catch (error) {
       console.log(error)
-      // next(error);
+      next(error);
     }
   }
 }
