@@ -8,15 +8,18 @@ function errorHandler(error, request, response, next) {
   switch (error.name) {
     case "DataNotFound":
       statusCode = 404;
-      message = "Data not Found";
+      message = "Data tidak ditemukan";
       break;
 
     case "CannotUpdate":
       statusCode = 400;
-      message = "Cart item cannot be 0";
+      message = "Total barang tidak boleh dibawah 1";
       break;
 
-    
+      case "DuplicateNotAllowed":
+        statusCode = 400;
+        message = "Item ini sudah ditambahkan di keranjang kamu";
+        break;
   }
 
   response.status(statusCode).json({

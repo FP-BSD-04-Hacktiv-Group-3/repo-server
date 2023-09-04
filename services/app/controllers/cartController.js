@@ -1,7 +1,7 @@
 const { Cart, Product, Image, Store } = require("../models"); // Import your Sequelize model
 
 class CartController {
-  static async findManyByUserId(request, response, next) {
+  static async fetchAllByUserId(request, response, next) {
     try {
       const { UserId } = request.params;
 
@@ -9,14 +9,28 @@ class CartController {
         where: {
           UserId,
         },
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
+        },
         include: {
           model: Product,
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
           include: [
             {
               model: Image,
+              attributes: ['imageUrl'],
+              limit: 1,
+              order: [
+                ["id", 'ASC']
+              ]
             },
             {
               model: Store,
+              attributes: {
+                exclude: ["createdAt", "updatedAt"],
+              },
             },
           ],
         },
@@ -28,20 +42,35 @@ class CartController {
     }
   }
 
-  static async addCart(request, response, next) {
+  static async addCartItem(request, response, next) {
     try {
-      const { UserId, quantity, ProductId, totalPrice } = request.body;
+      const { UserId, ProductId } = request.body;
+      const quantity = 1;
+      const productData = await Product.findByPk(ProductId);
+
+      if (!productData) throw { name: "DataNotFound" };
+
+      // handle kalo misalnya user mau nambahin product lalu di cart udah ada itemnya
+      const productSearch = await Cart.findAll({
+        where: {
+          UserId,
+        },
+      });
+
+      const filterCart = productSearch.find(
+        (el) => el.ProductId === +ProductId
+      );
+
+      if (filterCart) throw { name: "DuplicateNotAllowed" };
 
       await Cart.create({
         UserId,
         quantity,
         ProductId,
-        totalPrice,
       });
 
       response.status(201).json({
-        statusCode: 201,
-        message: "Successfully create a Cart",
+        message: `${productData.name} berhasil ditambahkan ke keranjang`,
       });
     } catch (error) {
       next(error);
@@ -60,8 +89,8 @@ class CartController {
 
       if (!data) throw { name: "DataNotFound" };
 
-      const quantity = data.quantity + 1
-      
+      const quantity = data.quantity + 1;
+
       await Cart.update(
         {
           quantity,
@@ -94,8 +123,8 @@ class CartController {
       if (!data) throw { name: "DataNotFound" };
 
       const quantity = data.quantity - 1;
-      
-      if(quantity < 1) throw {name: 'CannotUpdate'}
+
+      if (quantity < 1) throw { name: "CannotUpdate" };
 
       await Cart.update(
         {
@@ -120,6 +149,14 @@ class CartController {
     try {
       const { id } = request.params;
 
+      const data = await Cart.findByPk(id, {
+        include: {
+          model: Product,
+        },
+      });
+
+      if (!data) throw { name: "DataNotFound" };
+
       await Cart.destroy({
         where: {
           id,
@@ -127,15 +164,14 @@ class CartController {
       });
 
       response.status(200).json({
-        statusCode: 200,
-        message: "Successfully delete a Cart " + id,
+        message: `${data.Product.name} sudah dihapus dari keranjang kamu`,
       });
     } catch (error) {
       next(error);
     }
   }
 
-  static async deleteUserId(request, response, next) {
+  static async deleteAll(request, response, next) {
     try {
       const { UserId } = request.params;
 
@@ -146,8 +182,7 @@ class CartController {
       });
 
       response.status(200).json({
-        statusCode: 200,
-        message: "Successfully delete Carts by userId: " + UserId,
+        message: "Semua barang di keranjang kamu sudah dihapus",
       });
     } catch (error) {
       next(error);
