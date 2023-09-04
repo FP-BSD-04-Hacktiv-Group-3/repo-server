@@ -4,7 +4,8 @@ const Cart = require("../controllers/cartController");
 
 router.get("/:UserId", Cart.findManyByUserId);
 router.post("/addCart", Cart.addCart);
-router.put("/editCart/:id", Cart.editCart);
+router.patch('/increment/:id', Cart.incrementCartQuantity)
+router.patch('/decrement/:id', Cart.decrementCartQuantity)
 router.delete("/:id", Cart.deleteCart);
 router.delete("/deleteByUserId/:UserId", Cart.deleteUserId);
 

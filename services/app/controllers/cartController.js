@@ -22,12 +22,8 @@ class CartController {
         },
       });
 
-      response.status(200).json({
-        statusCode: 200,
-        data,
-      });
+      response.status(200).json(data);
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
@@ -48,22 +44,27 @@ class CartController {
         message: "Successfully create a Cart",
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
 
-  static async editCart(request, response, next) {
+  static async incrementCartQuantity(request, response, next) {
     try {
       const { id } = request.params;
 
-      const { UserId, quantity, ProductId } = request.body;
+      const data = await Cart.findByPk(id, {
+        include: {
+          model: Product,
+        },
+      });
 
+      if (!data) throw { name: "DataNotFound" };
+
+      const quantity = data.quantity + 1
+      
       await Cart.update(
         {
-          UserId,
           quantity,
-          ProductId,
         },
         {
           where: {
@@ -73,11 +74,44 @@ class CartController {
       );
 
       response.status(200).json({
-        statusCode: 200,
-        message: "Successfully update a Cart " + id,
+        message: `Cart with id ${id} with product name '${data.Product.name}' has its quantity increased to ${quantity}`,
       });
     } catch (error) {
-      console.log(error);
+      next(error);
+    }
+  }
+
+  static async decrementCartQuantity(request, response, next) {
+    try {
+      const { id } = request.params;
+
+      const data = await Cart.findByPk(id, {
+        include: {
+          model: Product,
+        },
+      });
+
+      if (!data) throw { name: "DataNotFound" };
+
+      const quantity = data.quantity - 1;
+      
+      if(quantity < 1) throw {name: 'CannotUpdate'}
+
+      await Cart.update(
+        {
+          quantity,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+
+      response.status(200).json({
+        message: `Cart with id ${id} with product name '${data.Product.name}' has its quantity increased to ${quantity}`,
+      });
+    } catch (error) {
       next(error);
     }
   }
@@ -97,7 +131,6 @@ class CartController {
         message: "Successfully delete a Cart " + id,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
@@ -117,7 +150,6 @@ class CartController {
         message: "Successfully delete Carts by userId: " + UserId,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
