@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../app");
-const { Product, Store, Cart, Image } = require("../models");
+const { Product, Store, Cart, Image, Category } = require("../models");
 
 describe("Carts Endpoints", function () {
   beforeAll(async () => {
@@ -8,7 +8,9 @@ describe("Carts Endpoints", function () {
     const storeData = require("../db/stores.json");
     const cartData = require("../db/carts.json");
     const imageData = require("../db/images.json");
+    const categoryData = require('../db/categories.json')
 
+    await Category.bulkCreate(categoryData)
     await Store.bulkCreate(storeData);
     await Product.bulkCreate(productData);
     await Cart.bulkCreate(cartData);
@@ -27,14 +29,13 @@ describe("Carts Endpoints", function () {
       cascade: true,
       restartIdentity: true,
     });
-  });
 
-  //   it("Fetch Products without any filters", async function () {
-  //     const response = await request(app).get("/product");
-
-  //     expect(response.status).toEqual(200);
-  //     expect(response.body.length).toEqual(12);
-  //   });
+    await Category.destroy({
+      truncate: true,
+      cascade: true,
+      restartIdentity: true,
+    });
+  }); 
 
   it("Fetch Cart by userid", async function () {
     const response = await request(app).get("/carts/64ed5f7942e9c21d8fe5e699");
@@ -59,33 +60,6 @@ describe("Carts Endpoints", function () {
       "Successfully create a Cart"
     );
   });
-
-  //   it("Fetch Products with with product name search", async function () {
-  //     const response = await request(app).get(
-  //       "/product?productName=Piring hitam kayu"
-  //     );
-
-  //     expect(response.status).toEqual(200);
-  //     expect(response.body[0]).toEqual(expect.any(Object));
-  //     expect(response.body[0].name).toEqual("Piring hitam kayu");
-  //   });
-
-  //   it("Fetch Products including other table/model", async function () {
-  //     const response = await request(app).get("/product");
-
-  //     expect(response.status).toEqual(200);
-  //     expect(response.body[0]).toHaveProperty("Images");
-  //   });
-
-  //   it("Fetch Product Detail", async function () {
-  //     const response = await request(app).get("/product/1");
-
-  //     expect(response.status).toEqual(200);
-  //     expect(response.body).toEqual(expect.any(Object));
-  //   });
-
-  //   // buat post product agak bingung karena ada hubungannya ama file/image
-  //   // it("")
 
   it("Delete Cart", async function () {
     const id = 12;

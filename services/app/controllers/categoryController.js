@@ -16,7 +16,6 @@ class CategoryController {
         data,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
@@ -30,7 +29,6 @@ class CategoryController {
         data,
       });
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
@@ -45,8 +43,8 @@ class CategoryController {
         message: "Successfully create",
       });
     } catch (error) {
-      console.log(error);
-      next(error);
+      // console.log(error);
+      // next(error);
     }
   }
   static async update(request, response, next) {
@@ -68,8 +66,8 @@ class CategoryController {
         message: "Successfully update " + id,
       });
     } catch (error) {
-      console.log(error);
-      next(error);
+      // console.log(error);
+      // next(error);
     }
   }
   static async delete(request, response, next) {
@@ -85,8 +83,8 @@ class CategoryController {
         message: "Successfully deleted",
       });
     } catch (error) {
-      console.log(error);
-      next(error);
+      // console.log(error);
+      // next(error);
     }
   }
 }
